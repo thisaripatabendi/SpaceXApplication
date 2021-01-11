@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: spacex-test
+  name: spacex-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spacex-test
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: spacex-test
+    spec:
+      containers:
+      - image: thisaripata/spacex-test:v1
+        name: spacex-test
+        env:
+          - name: spring.datasource.url
+            value: "jdbc:mysql://mysql/space_x_starlink?createDatabaseIfNotExist=true&useSSL=false&user=root"
+          - name: spring.datasource.username
+            value: "root"
+          - name: spring.datasource.password
+            value: "root"
