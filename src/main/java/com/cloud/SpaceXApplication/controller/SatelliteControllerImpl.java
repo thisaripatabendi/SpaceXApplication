@@ -28,6 +28,7 @@ public class SatelliteControllerImpl implements SatelliteController{
     public ResponseEntity<MockResponse> addSatellite(@ApiParam(value = "Satellite ID",required=true) @PathVariable("satelliteID") Long satelliteID) {
     	
         if(satelliteService.addSatellite(satelliteID) > 0) {
+        	System.out.println("test build");
             return new ResponseEntity<>(new MockResponse(204 ,"Successfully added the constellation"), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(new MockResponse(404, "Satellite not found"), HttpStatus.NOT_FOUND);
